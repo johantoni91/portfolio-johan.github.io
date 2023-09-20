@@ -1,0 +1,561 @@
+/* ===== Google Font Import - Poppins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.4s ease;;
+}
+
+
+/* ===== Colours ===== */
+:root{
+    --body-color: #E4E9F7;
+    --nav-color: #4070F4;
+    --side-nav: #010718;
+    --text-color: #FFF;
+    --search-text: #010718;
+    --mode-color: #000;
+    --shadow-color: #000;
+    --developer-color: #4070F4;
+    --bg-color: #82cfac;
+}
+
+body{
+    height: 100vh;
+    background-color: var(--body-color);
+}
+
+body.dark{
+    --body-color: #18191A;
+    --nav-color: #242526;
+    --side-nav: #242526;
+    --text-color: #CCC;
+    --mode-color: #FFF;
+    --shadow-color: #b6b6b688;
+    --developer-color: aqua;
+    --bg-color: #222423d2;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background-color: var(--nav-color);
+    z-index: 100;
+}
+
+body.dark nav{
+    border: 1px solid #393838;
+}
+
+nav .nav-bar{
+    position: relative;
+    height: 100%;
+    max-width: 1000px;
+    width: 100%;
+    background-color: var(--nav-color);
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .nav-bar .sidebarOpen{
+    color: var(--text-color);
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+nav .nav-bar .logo a{
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+    text-shadow: 0 3px 5px var(--shadow-color);
+}
+
+.menu .logo-toggle{
+    display: none;
+}
+
+.nav-bar .nav-links{
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar .nav-links li{
+    margin: 0 5px;
+    list-style: none;
+}
+
+.nav-links li a{
+    position: relative;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px;
+    text-shadow: 0 3px 5px var(--shadow-color);
+}
+
+.nav-links li a::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-links li:hover a::before{
+    opacity: 1;
+}
+
+.nav-bar .darkLight-searchBox{
+    display: flex;
+    align-items: center;
+}
+
+.darkLight-searchBox .dark-light,
+.darkLight-searchBox .searchToggle{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.dark-light i,
+.searchToggle i{
+    position: absolute;
+    color: var(--text-color);
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-light i.sun{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dark-light.active i.sun{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dark-light.active i.moon{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchToggle i.cancel{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchToggle.active i.cancel{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.searchToggle.active i.search{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchBox{
+    position: relative;
+}
+
+.searchBox .search-field{
+    position: absolute;
+    bottom: -85px;
+    right: 5px;
+    height: 50px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    background-color: var(--nav-color);
+    padding: 3px;
+    border-radius: 6px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.searchToggle.active ~ .search-field{
+    bottom: -74px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-field::before{
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: -4px;
+    height: 12px;
+    width: 12px;
+    background-color: var(--nav-color);
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+
+.search-field input{
+    height: 100%;
+    width: 100%;
+    padding: 0 45px 0 15px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--search-text);
+    background-color: var(--search-bar);
+}
+
+body.dark .search-field input{
+    color: var(--text-color);
+}
+
+.search-field i{
+    position: absolute;
+    color: var(--nav-color);
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+body.dark .search-field i{
+    color: var(--text-color);
+}
+
+@media (max-width: 790px) {
+    nav .nav-bar .sidebarOpen{
+        display: block;
+    }
+
+    .menu{
+        position: fixed;
+        height: 100%;
+        width: 320px;
+        left: -100%;
+        top: 0;
+        padding: 20px;
+        background-color: var(--side-nav);
+        z-index: 100;
+        transition: all 0.4s ease;
+    }
+
+    nav.active .menu{
+        left: -0%;
+    }
+
+    nav.active .nav-bar .navLogo a{
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .menu .logo-toggle{
+        display: block;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-toggle .siderbarClose{
+        color: var(--text-color);
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .nav-bar .nav-links{
+        flex-direction: column;
+        padding-top: 30px;
+    }
+
+    .nav-links li a{
+        display: block;
+        margin-top: 20px;
+    }
+}
+.home-class{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+#home{
+    padding: 4rem 6rem 7rem;
+}
+
+@media(max-width: 1169px){
+    .home-class{
+        flex-direction: column-reverse;
+    }
+    .class-images{
+        margin-inline: auto;
+    }
+}
+
+@media (max-width: 775px){
+    .nama{
+        font-size: 60%;
+    }
+    .nama h5{
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 677px){
+    .about{
+        display: flex;
+        flex-direction: column;
+    }
+    .about-me{
+        margin-top: 4rem;
+    }
+}
+
+@media (max-width: 465px){
+    #home{
+        padding-inline: 2%;
+        padding-top: 10%;
+    }
+}
+
+
+.projects{
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+
+
+
+
+/* PERUBAHAN DARK MODE */
+body.dark section{
+    background-color: var(--body-color);
+    color: #FFF;
+}
+
+body.dark #projects{
+    background-color: gray !important;
+}
+
+#home{
+    background-color: #51b98a;
+}
+
+body.dark #home{
+    background-color: var(--bg-color);
+}
+
+.developer{
+    color: var(--developer-color);
+}
+
+body.dark footer{
+    color: #FFF;
+    background-color: black;
+}
+
+footer{
+    color: black;
+    background-color: #e4e4e4;
+}
+
+footer a{
+    color: black;
+    background-color: #e4e4e4;
+}
+
+footer a:hover{
+    text-shadow: 0 3px 5px black;
+}
+body.dark footer a:hover{
+    text-shadow: 0 3px 5px white;
+}
+
+body.dark footer a{
+    color: white;
+    background-color: #e4e4e4;
+}
+
+.typewriter{
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+              font-weight: 800;
+              font-size: 4em;
+}
+
+body.dark .typewriter{
+    text-shadow: 0 2px 5px rgba(255, 255, 255, 1);
+              font-weight: 800;
+              font-size: 4em;
+    color: #fff;
+}
+
+#about h1{
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 1)
+}
+
+.img-about{
+    box-shadow: rgba(81, 185, 138, 0.4) 5px 5px, rgba(81, 185, 138, 0.3) 10px 10px, rgba(81, 185, 138, 0.2) 15px 15px, rgba(81, 185, 138, 0.1) 20px 20px, rgba(81, 185, 138, 0.05) 25px 25px;
+}
+
+body.dark .img-about{
+    box-shadow: rgba(132, 132, 132, 0.4) -5px 5px, rgba(132, 132, 132, 0.3) -10px 10px, rgba(132, 132, 132, 0.2) -15px 15px, rgba(132, 132, 132, 0.1) -20px 20px, rgba(132, 132, 132, 0.05) -25px 25px;
+}
+
+body.dark #about h1{
+    text-shadow: 0 2px 5px rgba(255,255,255,1);
+}
+
+#all-services{
+    box-shadow: 2px 5px 10px 1px #82cfac;    
+}
+
+body.dark #all-services{
+    box-shadow: 2px 5px 10px 1px rgba(255,255,255,1);
+}
+
+#service{
+    box-shadow: 2px 5px 10px 1px #82cfac;
+}
+
+#services h2{
+    text-shadow: 0 2px 5px black;
+}
+
+body.dark #services h2{
+    text-shadow: 0 2px 5px white;
+}
+
+#judul{
+    text-shadow: 2px 5px 10px 1px rgba(0,0,0,1);
+}
+
+body.dark #service{
+    box-shadow: 2px 5px 10px 1px rgba(255,255,255,1);
+}
+
+body.dark #judul{
+    text-shadow: 2px 5px 10px 1px rgba(255,255,255,1);
+}
+
+#projects h1{
+    text-shadow: 0 3px 5px rgba(0, 0, 0, 1);
+}
+
+body.dark #projects h1{
+    text-shadow: 0 3px 5px rgba(255,255,255,1);
+}
+
+#carouselExampleRide{
+    box-shadow: 2px 5px 10px 1px rgba(0,0,0,1);
+}
+
+body.dark #carouselExampleRide{
+    box-shadow: 2px 5px 10px 1px rgba(255,255,255,1);
+}
+
+#contact h4{
+    text-shadow: 0px 3px 5px black;
+}
+
+body.dark #contact h4{
+    text-shadow: 0px 3px 5px white;
+}
+.nama a{
+    border: 2px solid black;
+    border-radius: 1rem;
+    padding: 8px;
+    font-weight: 500;
+    color: black;
+    margin: auto;
+}
+.nama a:hover{
+    box-shadow: 3px 5px 10px black;
+}
+body.dark .nama a{
+    color: white;
+    border: 1px solid white;
+}
+body.dark .nama a:hover{
+    box-shadow: -3px 5px 10px white;
+}
+
+
+
+
+
+
+
+.typewriter {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid blue; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    
+    animation: 
+      typing 3.5s steps(50, end),
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgb(0, 255, 183); }
+  }
+
+  .img {
+    float: right;
+    width: 250px;
+    --_g: 10% /45% 45% no-repeat linear-gradient(#000 0 0);
+    --m:
+      left   var(--_i,0%) top    var(--_g),
+      bottom var(--_i,0%) left   var(--_g),
+      top    var(--_i,0%) right  var(--_g),
+      right  var(--_i,0%) bottom var(--_g);
+    -webkit-mask: var(--m);
+            mask: var(--m);
+    filter: grayscale();
+    transition: .3s linear;
+    cursor: pointer;
+  }
+  .img:hover {
+    --_i: 10%;
+    filter: grayscale(0);
+  }
+
+  body.dark .img{
+    filter: blur(1.7px);
+  }
+
+  body.dark .img:hover{
+    filter: none;
+  }
