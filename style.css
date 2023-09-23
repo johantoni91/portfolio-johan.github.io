@@ -16,11 +16,14 @@
     --nav-color: #4070F4;
     --side-nav: #010718;
     --text-color: #FFF;
-    --search-text: #010718;
     --mode-color: #000;
     --shadow-color: #000;
     --developer-color: #4070F4;
     --bg-color: #82cfac;
+    --btn-text-color: #000;
+    --text-shadow: 0 0px 5px black;
+    --box-shadow: 2px 5px 10px 1px black;
+    --white: white;
 }
 
 body{
@@ -35,8 +38,12 @@ body.dark{
     --text-color: #CCC;
     --mode-color: #FFF;
     --shadow-color: #b6b6b688;
-    --developer-color: aqua;
+    --developer-color: #82cfac;
     --bg-color: #222423d2;
+    --btn-text-color: #000;
+    --text-shadow: 0 0px 5px white;
+    --box-shadow: 2px 5px 10px 1px white;
+    --white: white;
 }
 
 nav{
@@ -163,89 +170,6 @@ nav .nav-bar .logo a{
     pointer-events: none;
 }
 
-.searchToggle i.cancel{
-    opacity: 0;
-    pointer-events: none;
-}
-
-.searchToggle.active i.cancel{
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.searchToggle.active i.search{
-    opacity: 0;
-    pointer-events: none;
-}
-
-.searchBox{
-    position: relative;
-}
-
-.searchBox .search-field{
-    position: absolute;
-    bottom: -85px;
-    right: 5px;
-    height: 50px;
-    width: 300px;
-    display: flex;
-    align-items: center;
-    background-color: var(--nav-color);
-    padding: 3px;
-    border-radius: 6px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-}
-
-.searchToggle.active ~ .search-field{
-    bottom: -74px;
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.search-field::before{
-    content: '';
-    position: absolute;
-    right: 14px;
-    top: -4px;
-    height: 12px;
-    width: 12px;
-    background-color: var(--nav-color);
-    transform: rotate(-45deg);
-    z-index: -1;
-}
-
-.search-field input{
-    height: 100%;
-    width: 100%;
-    padding: 0 45px 0 15px;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--search-text);
-    background-color: var(--search-bar);
-}
-
-body.dark .search-field input{
-    color: var(--text-color);
-}
-
-.search-field i{
-    position: absolute;
-    color: var(--nav-color);
-    right: 15px;
-    font-size: 22px;
-    cursor: pointer;
-}
-
-body.dark .search-field i{
-    color: var(--text-color);
-}
-
 @media (max-width: 790px) {
     nav .nav-bar .sidebarOpen{
         display: block;
@@ -296,6 +220,9 @@ body.dark .search-field i{
         margin-top: 20px;
     }
 }
+
+
+
 .home-class{
     display: flex;
     flex-direction: row;
@@ -305,6 +232,8 @@ body.dark .search-field i{
 #home{
     padding: 4rem 6rem 7rem;
 }
+
+
 
 @media(max-width: 1169px){
     .home-class{
@@ -332,6 +261,9 @@ body.dark .search-field i{
     .about-me{
         margin-top: 4rem;
     }
+    .projects{
+        max-width: 100vw !important;
+    }
 }
 
 @media (max-width: 465px){
@@ -348,6 +280,44 @@ body.dark .search-field i{
 }
 
 
+/* CERTIFICATION */
+.certificates .carousel .card{
+    margin: 1rem auto;
+    height: 26rem;
+}
+.check-certificate{
+    text-decoration: none;
+    margin: 0 auto;
+    padding: .5rem 1rem;
+    border: 1px solid var(--developer-color);
+    font-weight: 500;
+    border-radius: 2rem;
+    margin-bottom: 5%;
+    color: var(--mode-color);
+}
+
+.check-certificate:hover{
+    box-shadow: 0 0 10px var(--nav-color);
+    background-color: var(--developer-color);
+    color: var(--mode-color);
+}
+
+.card{
+    background-color: var(--body-color) !important;
+    box-shadow: 2px 5px 10px 1px var(--developer-color);
+    color: var(--mode-color) !important;
+}
+
+.card-title{
+    font-weight: 600;
+}
+#certificates h1{
+    text-shadow: var(--text-shadow);
+}
+.card-text{
+    text-align: justify;
+}
+
 
 
 
@@ -357,15 +327,11 @@ body.dark section{
     color: #FFF;
 }
 
-body.dark #projects{
-    background-color: gray !important;
+#projects{
+    background-color: var(--bg-color);
 }
 
 #home{
-    background-color: #51b98a;
-}
-
-body.dark #home{
     background-color: var(--bg-color);
 }
 
@@ -413,8 +379,9 @@ body.dark .typewriter{
     color: #fff;
 }
 
-#about h1{
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 1)
+#about h1,
+#services h1{
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 1);
 }
 
 .img-about{
@@ -425,65 +392,36 @@ body.dark .img-about{
     box-shadow: rgba(132, 132, 132, 0.4) -5px 5px, rgba(132, 132, 132, 0.3) -10px 10px, rgba(132, 132, 132, 0.2) -15px 15px, rgba(132, 132, 132, 0.1) -20px 20px, rgba(132, 132, 132, 0.05) -25px 25px;
 }
 
-body.dark #about h1{
+body.dark #about h1,
+body.dark #services h1{
     text-shadow: 0 2px 5px rgba(255,255,255,1);
 }
 
-#all-services{
-    box-shadow: 2px 5px 10px 1px #82cfac;    
-}
-
-body.dark #all-services{
-    box-shadow: 2px 5px 10px 1px rgba(255,255,255,1);
+#all-services, #services{
+    background-color: var(--bg-color);
 }
 
 #service{
-    box-shadow: 2px 5px 10px 1px #82cfac;
-}
-
-#services h2{
-    text-shadow: 0 2px 5px black;
-}
-
-body.dark #services h2{
-    text-shadow: 0 2px 5px white;
+    background-color: var(--body-color);
+    box-shadow: var(--box-shadow);
 }
 
 #judul{
-    text-shadow: 2px 5px 10px 1px rgba(0,0,0,1);
-}
-
-body.dark #service{
-    box-shadow: 2px 5px 10px 1px rgba(255,255,255,1);
-}
-
-body.dark #judul{
-    text-shadow: 2px 5px 10px 1px rgba(255,255,255,1);
+    text-shadow: var(--text-shadow);
 }
 
 #projects h1{
-    text-shadow: 0 3px 5px rgba(0, 0, 0, 1);
-}
-
-body.dark #projects h1{
-    text-shadow: 0 3px 5px rgba(255,255,255,1);
+    text-shadow: var(--text-shadow);
 }
 
 #carouselExampleRide{
-    box-shadow: 2px 5px 10px 1px rgba(0,0,0,1);
-}
-
-body.dark #carouselExampleRide{
-    box-shadow: 2px 5px 10px 1px rgba(255,255,255,1);
+    box-shadow:var(--box-shadow);
 }
 
 #contact h4{
-    text-shadow: 0px 3px 5px black;
+    text-shadow: var(--text-shadow);
 }
 
-body.dark #contact h4{
-    text-shadow: 0px 3px 5px white;
-}
 .nama a{
     border: 2px solid black;
     border-radius: 1rem;
@@ -502,12 +440,6 @@ body.dark .nama a{
 body.dark .nama a:hover{
     box-shadow: -3px 5px 10px white;
 }
-
-
-
-
-
-
 
 .typewriter {
     overflow: hidden; /* Ensures the content is not revealed until the animation */
@@ -559,3 +491,26 @@ body.dark .nama a:hover{
   body.dark .img:hover{
     filter: none;
   }
+
+
+
+#certificates .carousel-control-prev-icon{
+    background-color: var(--developer-color);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--developer-color);
+}
+
+#certificates .carousel-control-prev{
+    color: white;
+}
+
+#certificates .carousel-control-next-icon{
+    background-color: var(--developer-color);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--developer-color);
+}
+
+svg{
+    color: var(--mode-color);
+    text-shadow: var(--text-shadow);
+}
